@@ -3,5 +3,6 @@ public enum PackageStatus {
     Dispatched,
     InDeposit,
     PickedForDelivery,
-    Delivered
+    Delivered,
+    Returned,
 }

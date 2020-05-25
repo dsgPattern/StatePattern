@@ -1,8 +1,28 @@
 public class Package {
-    private PackageStatus _currentStatus = PackageStatus.Ordered;
+    private IPackageState _currentStatus;
+
+    public Package(){
+        _currentStatus = new DispatchedState();
+    }
+
+    public IPackageState getCurrentStatus() {
+        return _currentStatus;
+    }
+
+    public void setNextStatus(IPackageState state) {
+        if(_currentStatus.nextStatus(state.getStatus(),this)) {
+            //_currentStatus = state;
+        }
+    }
+
+    public void setCurrentStatus(IPackageState state) {
+        _currentStatus = state;
+        System.out.println("Set as "+state.getStatus());
+    }
+
 
     public void setStatus(PackageStatus status){
-        switch (status)
+        /*switch (status)
         {
             case Ordered:
                 if(_currentStatus== PackageStatus.Ordered){
@@ -37,7 +57,6 @@ public class Package {
                     break;
                 }
 
-                _currentStatus= status;
                 System.out.println("Cannot set to InDeposit");
                 break;
 
@@ -52,7 +71,6 @@ public class Package {
                     break;
                 }
 
-                _currentStatus= status;
                 System.out.println("Cannot set to PickedForDelivery");
                 break;
 
@@ -69,6 +87,6 @@ public class Package {
 
                 System.out.println("Cannot set to Delivered");
                 break;
-        }
+        }*/
     }
 }
