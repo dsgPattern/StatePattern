@@ -22,8 +22,8 @@ public class PickedForDeliveryState implements  IPackageState {
     }
 
     @Override
-    public void prevStatus(IPackageState state) {
+    public void prevStatus(Package pkg) {
         InDepositState depositState = new InDepositState();
-        state.prevStatus(depositState);
+        pkg.setCurrentStatus(depositState);
     }
 }

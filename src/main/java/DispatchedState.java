@@ -16,7 +16,7 @@ public class DispatchedState implements IPackageState {
     }
 
     @Override
-    public void prevStatus(IPackageState state) {
+    public void prevStatus(Package pkg) {
         System.out.println("Cannot go to previous state");
     }
 }

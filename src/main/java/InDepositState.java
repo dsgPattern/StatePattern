@@ -21,7 +21,7 @@ public class InDepositState implements IPackageState {
     }
 
     @Override
-    public void prevStatus(IPackageState state) {
-        System.out.println("Cannot go back to Dispatched");
+    public void prevStatus(Package pkg) {
+        System.out.println("Cannot go back");
     }
 }

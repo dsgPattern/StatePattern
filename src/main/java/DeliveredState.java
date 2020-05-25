@@ -13,7 +13,7 @@ public class DeliveredState implements IPackageState{
     }
 
     @Override
-    public void prevStatus(IPackageState state) {
+    public void prevStatus(Package pkg) {
         System.out.println("It's already delivered, cannot go back");
     }
 }

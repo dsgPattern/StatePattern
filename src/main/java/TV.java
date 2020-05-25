@@ -1,46 +1,33 @@
 public class TV {
     private boolean _isOn;
-    private int _volume;
+    private int _volume=1;
+    private IPossibleStates _currentState;
+
+    public IPossibleStates getCurrentState(){
+        return _currentState;
+    }
+
+    public void setCurrentState(IPossibleStates newState){
+        _currentState = newState;
+    }
 
     public TV() {
-
+        _currentState = new OffState(this);
     }
 
     public void powerOn() {
-        if (_isOn) {
-            System.out.println("Is already on");
-            return;
-        }
-
-        _isOn = true;
-        System.out.println("Powered on the TV");
+        _currentState.On(this);
     }
 
     public void powerOff() {
-        if (_isOn) {
-            _isOn = false;
-            System.out.println("Powered off the TV");
-            return;
-        }
-
-        System.out.println("Is already off");
+        _currentState.Off(this);
     }
 
     public void mute() {
-        if (!_isOn) {
-            System.out.println("Tv is off");
-            return;
-        }
-
-        if (_volume == 0) {
-            System.out.println("Is already on mute");
-            return;
-        }
-
-        _volume = 0;
+        _currentState.Mute(this);
     }
 
-    public void volumeUp() {
+    /*public void volumeUp() {
         if (!_isOn) {
             System.out.println("Tv is off");
             return;
@@ -66,5 +53,5 @@ public class TV {
         }
 
         _volume--;
-    }
+    }*/
 }
